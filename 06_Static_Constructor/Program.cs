@@ -6,13 +6,8 @@
         {
             #region Static constructor tetiklenmesi
 
-            //Static constructor sınıf içerisinde tanımlanan static bir üye çağrıldığında veya ilk kez ilgili sınıftan nesne oluşturulduğunda tetiklenir.
-
-            //Statik üyelere sınıf adı üzerinden erişiyoruz. Burada ilk static üye çağırdığımız için static constructor tetiklenecektir.
             User.UygulamaHakkinda();
 
-
-            //Burada User sınıfından ilk kez nesne üretiyoruz. İlgili sınıftan ilk kez nesne ürettiğimizde normalde ilk tetiklenecek metod static constructordı ancak yukarıda static üye çağrılınca tetiklendiği için birdaha tetiklenmeyecek ve artık normal constructor tetiklenecek.
             User user1 = new User()
             {
                 Ad = "Rose",
