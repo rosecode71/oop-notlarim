@@ -48,7 +48,7 @@
             Console.WriteLine(inek5 is Memeli);
             Console.WriteLine(inek5 is Inek);
 
-            Console.WriteLine(inek5 is Aslan);
+            Console.WriteLine(inek5 is Aslan); //inek5 in referans ettiği inek nesnesi ile aslan nesnesi ikisi de memeli sınıfından türerler yani yatay olarak aynı hizada yer alırlar ancak aralarıdna kalıtsal bir ilişki yoktur.
 
             Hayvan hayvan = new Memeli();
             Console.WriteLine(hayvan is Canli);
