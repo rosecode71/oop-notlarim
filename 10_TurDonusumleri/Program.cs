@@ -39,6 +39,24 @@
             Canli canli3 = inek3; //Bilinçsiz tür dönüşümü
             #endregion
             #endregion
+
+            #region is operatörü
+            //is operatörü sayesinde nesnenin hangi tür/türlerde olduğunu kontrol edebiliyoruz.
+            Inek inek5 = new Inek();
+            Console.WriteLine(inek5 is Canli);
+            Console.WriteLine(inek5 is Hayvan);
+            Console.WriteLine(inek5 is Memeli);
+            Console.WriteLine(inek5 is Inek);
+
+            Console.WriteLine(inek5 is Aslan);
+
+            Hayvan hayvan = new Memeli();
+            Console.WriteLine(hayvan is Canli);
+            Console.WriteLine(hayvan is Memeli);
+            Console.WriteLine(hayvan is Hayvan);
+            Console.WriteLine(hayvan is Inek);
+
+            #endregion
         }
     }
 
