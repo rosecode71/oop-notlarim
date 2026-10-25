@@ -15,7 +15,7 @@ interface ICevre
 
 //Burada Hesaplayici sınıfı IAlan ve ICevre sınıfını uyguluyor yani onunla bir anlaşma imzalıyor. Dikkat ederseniz IAlan ve ICevre içerisindeki member imzaları birbirleriyle tamamen aynı. Bu memberları sınıf içerisinde uyguladığımızda hangi interface'den geldiğini bilemiyoruz ya da ilgili interface'e göre operasyon gerçekleştiremiyoruz işte bu durumun önüne geçmek için de Explicity Implement dediğimiz yani açıkça uygulama yapısından yararlanacağız.
 
-#region Explicity Implement Olmadan Interface Uygulama
+#region Name Hiding Durumu
 class Hesaplayici : IAlan, ICevre
 {
     public double DikdortgenHesapla(double uzunKenar, double kisaKenar)
@@ -28,4 +28,7 @@ class Hesaplayici : IAlan, ICevre
         return 0;
     }
 }
+#endregion
+
+#region Explicity Implementation 
 #endregion
