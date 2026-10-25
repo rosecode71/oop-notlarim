@@ -10,6 +10,17 @@ double kareCevresi = cevre.KareHesapla(5);
 Console.WriteLine($"Dikdörtgenin alani: {dikdortgenAlani} - cevresi: {dikdortgenCevresi}");
 Console.WriteLine($"Karenin alani: {kareAlani} - cevresi: {kareCevresi}");
 
+//Base Class ve Interface'de aynı member imzası bulunması durumu
+DerivedClass dclass = new DerivedClass();
+Console.WriteLine(dclass.A);
+IInterface intf = dclass;
+Console.WriteLine(intf.A);
+
+
+//Default Implementation
+IExample expi = new CExample();
+expi.Method1();
+expi.Method2();
 interface IAlan
 {
     double KareHesapla(int en);
@@ -69,4 +80,49 @@ class HesapMakinesi : IAlan, ICevre
         return 4 * en;
     }
 }
+#endregion
+
+#region BaseClass'taki member imzası ile Interface'deki member imzasının birebir aynı olması durumunda BaseClass'ı miras lan Interface'ı implement eden sınıf için Name Hiding durumuna düşürmeyecektir.
+
+class BaseClass
+{
+    public int A { get; set; } = 20;
+}
+interface IInterface
+{
+    int A { get; set; }
+
+}
+//A memberı kalıtımla DerivedClass'a aktarıldığı için haliyle IInterface'deki A memberını uygulamış oluyor.
+class DerivedClass : BaseClass, IInterface
+{
+}
+#endregion
+
+
+#region Default Implementation Interface
+
+interface IExample
+{
+    void Method1();
+
+    void Method2()
+    {
+        Console.WriteLine("Bu bir default implementation'dur");
+    }
+}
+
+class CExample : IExample
+{
+    public void Method1()
+    {
+        Console.WriteLine("Method1 için sadece imza tanımlandığı için uygulanmak zorunda");
+    }
+    //public void Method2()
+    //{
+    //    Console.WriteLine("Method2'in uygulanması isteğe bağlıdır çünkü default implementation'a sahiptir.");
+
+    //}
+}
+
 #endregion
