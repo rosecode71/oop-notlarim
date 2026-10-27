@@ -29,3 +29,33 @@ Bu proje; gerçek dünya kütüphane süreçlerini dijitalleştirmek, Clean Code
 * **Gelişmiş Arama & Filtreleme:** Materyalleri ada göre esnek bir şekilde arama ve sadece ödünç alınmış/rafta olan öğeleri filtreleme.
 * **Ödünç Alma ve İade Mekanizması:** Üye bazlı kiralama takibi, aynı kitabın tekrar kiralanmasını engelleyen koruma yapıları ve dinamik iade süreçleri.
 
+## 🖥️ Örnek Konsol Çıktıları
+
+Uygulamanın çalıştırılması ve akış senaryolarına ait ekran görüntüleri:
+
+### 1. Menü Çıktısı
+<p align="center">
+  <img src="./resim/menu.png" width="500" alt="Menü Çıktısı">
+</p>
+
+### 2. Tüm Materyalleri Listele
+<p align="center">
+  <img src="./resim/tum_materyal_listele.png" width="500" alt="Tüm Materyalleri Listele">
+</p>
+
+### 3. Arama Sonucu Materyal Listele
+<p align="center">
+  <img src="./resim/arama_sonuc_listele.png" width="500" alt="Arama Sonucu Materyal Listele">
+</p>
+
+### 4. Materyal Ödünç Alma
+<p align="center">
+  <img src="./resim/odunc_alma.png" width="500" alt="Materyal Ödünç Alma">
+</p>
+
+### 5. Materyal İade Etme
+<p align="center">
+  <img src="./resim/iade_etme.png" width="500" alt="Materyal İade Etme">
+</p>
+
+

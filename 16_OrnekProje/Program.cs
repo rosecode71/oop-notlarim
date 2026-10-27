@@ -37,6 +37,9 @@
             });
 
             //Menü
+            Console.WriteLine("\n*************************************************************");
+            Console.WriteLine("Merhabalar Konsol Kütüphane Otomasyon Sistemimize Hoşgeldiniz.");
+            Console.WriteLine("*************************************************************\n");
             while (true)
             {
                 Console.WriteLine("1.Materyalleri Listele\n2.Kitap Ara\n3.Kitap Ara ve Ödünç Al\n4.Kitap İade Et\n0.Sistemden Çıkış");
@@ -46,6 +49,7 @@
                 switch (islem)
                 {
                     case 0:
+                        Console.WriteLine("Sistem oturumu sonlanıyor....");
                         return;
                     case 1:
                         ListOfMaterial(items,"Kütüphanedeki Tüm Materyal Listesi:");
