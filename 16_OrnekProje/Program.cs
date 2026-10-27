@@ -17,6 +17,24 @@
             Book b10 = new Book("Kuyucaklı Yusuf", "Farklı Yayın", 200, 2020, "9789753639999"); 
 
             List<LibraryItem> items = [b1, b2, b3,b4,b5,b6,b7,b8,b9,b10];
+            items.Add(new AudioBook
+            {
+                Title = "Kürk Mantolu Madonna (Sesli)",
+                Author = "Sabahattin Ali",
+                DurationMinutes = 185,
+                IsBorrowed = false,
+                PublishYear=1943
+            });
+
+            items.Add(new AudioBook
+            {
+                Title = "1984 (Sesli)",
+                Author = "George Orwell",
+                DurationMinutes = 350,
+                IsBorrowed = false,
+                PublishYear = 1980
+
+            });
 
             //Menü
             while (true)
@@ -253,7 +271,13 @@
         //LibraryItem abstract classında uygulatılması gereken member.
         public override void DisplayInfo()
         {
-            Console.WriteLine($"Kitap Id: {Id}\nKitap Adı:{this.Title}\nKitap Yazarı: {this.Author}\nYayınlanma Tarihi: {PublishYear}\nÖdünç Alınabilir Mi: {this.IsBorrowed }\nSayfa Sayısı: {PageCount}\nISBN: {ISBN}\n");
+            Console.WriteLine($"{"Kitap Id:",-22} {Id}");
+            Console.WriteLine($"{"Kitap Adı:",-22} {Title}");
+            Console.WriteLine($"{"Kitap Yazarı:",-22} {Author}");
+            Console.WriteLine($"{"Yayınlanma Tarihi:",-22} {PublishYear}");
+            Console.WriteLine($"{"Ödünç Alınmış Mı:",-22} {(IsBorrowed ? "Evet" : "Hayır")}");
+            Console.WriteLine($"{"Sayfa Sayısı:",-22} {PageCount}");
+            Console.WriteLine($"{"ISBN:",-22} {ISBN}\n");
         }
 
 
@@ -269,24 +293,27 @@
     }
     #endregion
 
-    #region SubClass2: Magazine(Dergi) sınıfı
-    class Magazine: LibraryItem
-    {
-        public int IssueNumber { get; set; }
-        public override void DisplayInfo()
-        {
-            Console.WriteLine($"{this.Title}\n{this.Author}\n{PublishYear}\n{this.IsBorrowed}\n{IssueNumber}");
-        }
-    }
-    #endregion
-    
-    #region SubClass3: AudioBook
-    class AudioBook: LibraryItem
+    #region SubClass2: AudioBook
+    class AudioBook: LibraryItem,ISearchable
     {
         public int DurationMinutes { get; set; }
         public override void DisplayInfo()
         {
-            Console.WriteLine($"{this.Title}\n{this.Author}\n{PublishYear}\n{this.IsBorrowed}\n{DurationMinutes}");
+            Console.WriteLine($"{"Sesli Kitap Id:",-22} {this.Id}");
+            Console.WriteLine($"{"Sesli Kitap Adı:",-22} {this.Title}");
+            Console.WriteLine($"{"Kitap Yazarı:",-22} {this.Author}");
+            Console.WriteLine($"{"Yayınlanma Tarihi:",-22} {PublishYear}");
+            Console.WriteLine($"{"Ödünç Alınmış Mı:",-22} {(this.IsBorrowed ? "Evet" : "Hayır")}");
+            Console.WriteLine($"{"Süresi:",-22} {(DurationMinutes > 60 ? $"{DurationMinutes / 60} saat {DurationMinutes % 60} dakika" : $"{DurationMinutes} dakika")}\n");
+        }
+
+        public bool isFind(string keyword)
+        {
+            if (this.Title.ToLower().Contains(keyword.ToLower()))
+            {
+                return true;
+            }
+            return false;
         }
     }
     #endregion
