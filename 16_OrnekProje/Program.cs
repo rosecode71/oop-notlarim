@@ -30,17 +30,25 @@
                     case 0:
                         return;
                     case 1:
-                        ListOfMaterial(items);
+                        ListOfMaterial(items,"Kütüphanedeki Tüm Materyal Listesi:");
                         break;
                     case 2:
                         List<LibraryItem> AramaSonucListesi = SearchMaterial(items);
                         if(AramaSonucListesi.Count !=0)
-                           ListOfMaterial(AramaSonucListesi);
+                           ListOfMaterial(AramaSonucListesi,"Arama Sonuçları:");
                         break;
                     case 3:
                         SearcAndBorrow(items, "Gülfidan");
                         break;
                     case 4:
+                        List<LibraryItem> OduncAlinmisListesi = SearchBorrowedItem(items);
+                        if(OduncAlinmisListesi.Count == 0)
+                        {
+                            Console.WriteLine("!!! Ödünç alınmış materyal yok.");
+                            break;
+                        }
+                        ListOfMaterial(OduncAlinmisListesi,"Ödünç Alınmış Materyal Listesi:");
+                        ReturnItem(OduncAlinmisListesi);
                         break;
                     default:
                         break;
@@ -48,16 +56,15 @@
                 Console.WriteLine("\n==================================================================\n");
             }
                   
-            
         }
 
-        public static void ListOfMaterial(List<LibraryItem> items)
+        public static void ListOfMaterial(List<LibraryItem> items,string message)
         {
             if(items.Count == 0)
             {
                 return;
             }
-            Console.WriteLine("Kütüphanede bulunan materyaller listesi:");
+            Console.WriteLine(message);
             foreach(var item in items)
             {
                 item.DisplayInfo();
@@ -96,7 +103,7 @@
             {
                 return;
             }
-            ListOfMaterial(bulunanSonuclar);
+            ListOfMaterial(bulunanSonuclar,"Arama sonuçları:");
 
             Console.WriteLine("Lütfen ödünç almak istediğiniz materyalin Id'sini giriniz.");
             int Id = int.Parse(Console.ReadLine());
@@ -113,6 +120,43 @@
                     Console.WriteLine("Maalesef ilgili materyal ödünç alınabilir değil.");
 
                 }
+            }
+        }
+        public static List<LibraryItem> SearchBorrowedItem(List<LibraryItem> items)
+        {
+            List<LibraryItem> OduncAlinmisListesi = [];
+            foreach(var item in items)
+            {
+                if (item.IsBorrowed)
+                {
+                    OduncAlinmisListesi.Add(item);
+                }
+            }
+            return OduncAlinmisListesi;
+        }
+        public static void ReturnItem(List<LibraryItem> items)
+        {
+            Console.WriteLine("Lütfen iade etmek istediğiniz materyalin Id bilgisini giriniz:");
+            if (int.TryParse(Console.ReadLine(), out int id))
+            {
+                foreach (var item in items)
+                {
+                    if (item.Id == id)
+                    {
+                        if (item is IBorrowable borrowable)
+                        {
+                            borrowable.ReturnItem();
+                            return; 
+                        }
+                        Console.WriteLine("Maalesef ilgili materyal iade edilebilir bir yapıda değil.");
+                        return;
+                    }
+                }
+                Console.WriteLine("Girdiğiniz ID'ye sahip ödünç alınmış bir materyal bu listede bulunamadı.");
+            }
+            else
+            {
+                Console.WriteLine("Geçersiz bir ID girdiniz. Lütfen sayısal bir değer giriniz.");
             }
         }
     }
