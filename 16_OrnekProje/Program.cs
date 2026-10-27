@@ -18,15 +18,54 @@
 
             List<LibraryItem> items = [b1, b2, b3,b4,b5,b6,b7,b8,b9,b10];
 
-            //Kitap Ödünç Alma Sistemi
-            SearcAndBorrow(items, "Gülfidan");
+            //Menü
+            while (true)
+            {
+                Console.WriteLine("1.Materyalleri Listele\n2.Kitap Ara\n3.Kitap Ara ve Ödünç Al\n4.Kitap İade Et\n0.Sistemden Çıkış");
+                Console.WriteLine("Yapmak istediğiniz işlemin numarasını giriniz: ");
+                int islem = int.Parse(Console.ReadLine());
+                Console.WriteLine("\n==================================================================\n");
+                switch (islem)
+                {
+                    case 0:
+                        return;
+                    case 1:
+                        ListOfMaterial(items);
+                        break;
+                    case 2:
+                        List<LibraryItem> AramaSonucListesi = SearchMaterial(items);
+                        if(AramaSonucListesi.Count !=0)
+                           ListOfMaterial(AramaSonucListesi);
+                        break;
+                    case 3:
+                        SearcAndBorrow(items, "Gülfidan");
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+                }
+                Console.WriteLine("\n==================================================================\n");
+            }
                   
             
         }
-        public static  void SearcAndBorrow(List<LibraryItem> items,string memberName)
+
+        public static void ListOfMaterial(List<LibraryItem> items)
         {
-            //Kitap Ödünç Alma Sistemi
-            Console.WriteLine("Ödünç almak istediğiniz ögenin adınız giriniz örneğin Piraye.");
+            if(items.Count == 0)
+            {
+                return;
+            }
+            Console.WriteLine("Kütüphanede bulunan materyaller listesi:");
+            foreach(var item in items)
+            {
+                item.DisplayInfo();
+            }
+        }
+        public static List<LibraryItem> SearchMaterial(List<LibraryItem> items)
+        {
+            Console.WriteLine("Arama yapmak istediğiniz ögenin adını giriniz:");
             string Title = Console.ReadLine();
             List<LibraryItem> bulunanSonuclar = [];
 
@@ -45,14 +84,23 @@
             if (bulunanSonuclar.Count == 0)
             {
                 Console.WriteLine("Aradığınız materyale uygun sonuç bulunamadı.");
+            }
+            return bulunanSonuclar;
+        }
+        public static  void SearcAndBorrow(List<LibraryItem> items,string memberName)
+        {
+            //Kitap Ödünç Alma Sistemi
+           
+            List<LibraryItem> bulunanSonuclar = SearchMaterial(items);
+            if(bulunanSonuclar.Count == 0)
+            {
                 return;
             }
-            foreach (var sonuc in bulunanSonuclar)
-            {
-                sonuc.DisplayInfo();
-            }
+            ListOfMaterial(bulunanSonuclar);
+
             Console.WriteLine("Lütfen ödünç almak istediğiniz materyalin Id'sini giriniz.");
             int Id = int.Parse(Console.ReadLine());
+
             foreach (var sonuc in bulunanSonuclar)
             {
                 if (sonuc.Id == Id)
@@ -60,7 +108,7 @@
                     if (sonuc is IBorrowable borrowable)
                     {
                         borrowable.BorrowItem(memberName);
-                        break;
+                        return;
                     }
                     Console.WriteLine("Maalesef ilgili materyal ödünç alınabilir değil.");
 
