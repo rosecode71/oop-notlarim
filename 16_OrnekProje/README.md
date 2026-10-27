@@ -1,11 +1,11 @@
-﻿# 📚 C# Console Library Management System
+﻿# 🖤 C# Console Library Management System
 ### Nesne Yönelimli Programlama (OOP) & Polimorfizm Konsol Otomasyonu
 
-## 🚀 Proje Hakkında
+## 💜 Proje Hakkında
 Bu proje; gerçek dünya kütüphane süreçlerini dijitalleştirmek, Clean Code (Temiz Kod) standartlarını uygulamak ve C# dilindeki ileri düzey OOP yeteneklerini (Soyutlama, Kalıtım, Çok Biçimlilik) pratik etmek amacıyla geliştirilmiş uçtan uca konsol tabanlı bir otomasyon sistemidir.
 
 
-## 🛠️ Mimari ve OOP Özellikleri
+## 💚 Mimari ve OOP Özellikleri
 
 | Tasarım Deseni / Prensip | Uygulama Alanı | Açıklama |
 | :--- | :--- | :--- |
@@ -16,14 +16,14 @@ Bu proje; gerçek dünya kütüphane süreçlerini dijitalleştirmek, Clean Code
 
 ---
 
-## 📊 Desteklenen Materyal Türleri ve Özellikleri
+## ❤️ Desteklenen Materyal Türleri ve Özellikleri
 
 * **📖 Kitap (Book):** Sayfa sayısı, ISBN numarası ve yazar bilgisi.
 * **🎧 Sesli Kitap (AudioBook):** Süre bilgisi (otomatik saat/dakika hesaplama mantığı ile).
 
 ---
 
-## 🖥️ Öne Çıkan Kullanıcı Deneyimi (UX) Özellikleri
+## 🏆 Öne Çıkan Kullanıcı Deneyimi  Özellikleri
 
 * **İnteraktif Döngü:** Sonsuz `while` döngüsü ve `switch-case` yapısıyla çalışan kolay menü sistemi.
 * **Gelişmiş Arama & Filtreleme:** Materyalleri ada göre esnek bir şekilde arama ve sadece ödünç alınmış/rafta olan öğeleri filtreleme.
