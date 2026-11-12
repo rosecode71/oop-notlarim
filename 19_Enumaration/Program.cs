@@ -80,10 +80,16 @@ Permissions adminPermissions = Permissions.Add | Permissions.Update | Permission
 Console.WriteLine($"Kullanıcı İzinleri : {userPermissions} ");
 Console.WriteLine($"Admin izinleri : {adminPermissions}");
 
+if((userPermissions & Permissions.Add) == Permissions.Add)
+{
+    Console.WriteLine("Kullanıcının ekleme izni var.");
+}
+else
+{
+    Console.WriteLine("Kullanıcının ekleme izni yok.");
+}
 
-
-
-[Flags]
+    [Flags]
 enum Permissions
 {
     None = 1,
