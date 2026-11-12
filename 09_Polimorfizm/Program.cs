@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _09_Polimorfizm
+namespace _09_1_Polimorfizm
 {
     internal class Program
     {

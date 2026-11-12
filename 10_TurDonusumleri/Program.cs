@@ -57,6 +57,24 @@
             Console.WriteLine(hayvan is Inek);
 
             #endregion
+
+            #region Ata türden olan bir dizide kendi/alt türden nesneleri toplama ve ekrana yazdirma
+            Canli[] canlilar =
+            {
+                new Memeli(),
+                new Canli(),
+                new Hayvan(),
+                new Inek(),
+                new Aslan(),
+            };
+
+            foreach(Canli canli in canlilar)
+            {
+                Console.WriteLine(canli);
+            }
+            Console.WriteLine("\n"+canlilar[1]);
+            Console.WriteLine(canlilar[3]);
+            #endregion
         }
     }
 
@@ -81,7 +99,7 @@
 
     }
     //Her aslan bir memelidir.
-    class Aslan : Memeli
+   sealed class Aslan : Memeli
     {
 
     }
